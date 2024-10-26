@@ -2,6 +2,8 @@ Hi!
 
 I've made this DIY UPS for my home network equipment for the long hours without electricity (16-18 hours per day). I already had a commercial UPS from Aliexpress, but it used a high current of 18650 cells which I plan to use in a power bank for a laptop project. So, the idea of a UPS from generic cheap components was born. The goal was to reuse a bunch of Li-pol batteries of different sizes and other parts that I bought from Aliexpress because they were cheaper to buy in bulk and I had never used them. 
 
+![UPS](https://github.com/user-attachments/assets/aae098c7-c57a-4024-a9c8-327fb953a988)
+
 The circuit can be simplified, but I have 2 ethernet switches—one uses 5V and the other 9V—while the router and ONU use 12V. Each Li-pol cell has its own BMS, and they are all connected in parallel. The capacity is unknown, but I estimated it to be about 10Ah.
 
 These LM2596 DC-DC converters should handle up to 3A, but they seem to be fake as they produce a lot of heat (https://www.youtube.com/watch?v=hBOJDlftKTU). Since I had a pack, I used 2: one for charging and the other for powering the equipment when AC is present. The heat is reduced during charging in such cases.
