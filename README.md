@@ -1,15 +1,37 @@
-Hi!
+# DIY Simple Router UPS
 
-I've made this DIY UPS for my home network equipment for the long hours without electricity (16-18 hours per day). I already had a commercial UPS from Aliexpress, but it used a high current of 18650 cells which I plan to use in a power bank for a laptop project. So, the idea of a UPS from generic cheap components was born. The goal was to reuse a bunch of Li-pol batteries of different sizes and other parts that I bought from Aliexpress because they were cheaper to buy in bulk and I had never used them. 
+## Description
 
-![UPS](https://github.com/user-attachments/assets/aae098c7-c57a-4024-a9c8-327fb953a988)
+Welcome to my DIY project where I've designed a custom Uninterruptible Power Supply (UPS) for my home network equipment. This solution is aimed at providing power during long outages (16-18 hours a day). Rather than using a commercial UPS from Aliexpress which consumed high current from 18650 cells—cells I wanted to reserve for a future power bank project for my laptop—I decided to create a UPS using generic, cost-effective components.
 
-The circuit can be simplified, but I have 2 ethernet switches—one uses 5V and the other 9V—while the router and ONU use 12V. Each Li-pol cell has its own BMS, and they are all connected in parallel. The capacity is unknown, but I estimated it to be about 10Ah.
+The primary goal of this project was to repurpose a collection of Li-polymer batteries of different sizes and various components purchased in bulk from Aliexpress, which I had never previously used.
 
-These LM2596 DC-DC converters should handle up to 3A, but they seem to be fake as they produce a lot of heat (https://www.youtube.com/watch?v=hBOJDlftKTU). Since I had a pack, I used 2: one for charging and the other for powering the equipment when AC is present. The heat is reduced during charging in such cases.
+![DIY UPS Setup](https://github.com/tornadox/diy-simple-router-ups/blob/main/UPS.png?raw=true)
 
-I used TP4056 modules because I had a pack of them. One can charge at 1A, which is very slow and couldn't charge enough during the 2-hour electricity presence periods. So, they're connected in parallel and charge at 2A. I can probably add another one, but I don't want to overheat the LM2596 module, which is configured to 6V to reduce heat. TP4056 allows up to 8V input, but again, heat management is a concern.
+### Design Overview
 
-Two Schottky diodes are used for switching between the LM2596 boards from battery to AC. The output is connected to 4 SX1308 (MT3608) DC-DC converters, each handling up to 2A. Since I had a pack of them, I just used a separate board for each device.
+The circuit design is built to support two Ethernet switches (one operating at 5V, the other at 9V), alongside a router and an Optical Network Unit (ONU) that require 12V. Each Li-poly cell is paired with its own Battery Management System (BMS) and they are connected in parallel. While the total capacity is uncertain, I estimate it to be around 10Ah.
 
-The batteries are separated from the DC converters and Schottky diodes for heat management, basically, they are in two plastic candy cases. But I'm planning to 3D print one so there is good ventilation. This setup has been running for 2 months without issues, providing 5-6 hours of power and fully charging in 7-9 hours if fully discharged. 
+For voltage regulation, I employed LM2596 DC-DC converters, which theoretically can handle up to 3A; however, they tend to overheat (you can see more on this issue in [this video](https://www.youtube.com/watch?v=hBOJDlftKTU)). I utilized two LM2596 modules—one for charging and another for powering the devices when AC power is available, which also helps mitigate heat during charging times.
+
+### Charging Solution
+
+For the charging solution, I used TP4056 modules, which I had available. Each module is capable of charging at 1A. However, this slow charge rate meant they couldn't replenish the batteries sufficiently during the periodic 2-hour periods when electricity was present. To enhance the charging rate, I connected multiple TP4056 modules in parallel, allowing for a 2A charging capacity. There’s potential to add even one more, although heat management remains a priority as the LM2596 module is set to output 6V for heat reduction.
+
+### Switching Mechanism
+
+To switch between the LM2596 boards for battery and AC power, I employed two Schottky diodes. The output connects to four SX1308 (MT3608) DC-DC converters, each capable of handling up to 2A. Since I had several of these on hand, I allocated one for each device to simplify the setup.
+
+### Housing and Cooling
+
+To improve thermal management, the batteries are separated from the DC converters and Schottky diodes, housed in two plastic candy containers. I'm also considering a 3D-printed enclosure to enhance ventilation and heat dissipation.
+
+### Performance
+
+This UPS setup has been operational for over two months without any issues. It successfully provides 5-6 hours of power supply and can fully recharge within 7-9 hours after being completely drained.
+
+## Conclusion
+
+This project embodies an efficient way to maintain network connectivity during power outages by repurposing spare components and batteries. I invite you to explore the code, schematic, and any potential improvements this DIY UPS can offer!
+
+Feel free to contribute, suggest improvements, or ask questions!
